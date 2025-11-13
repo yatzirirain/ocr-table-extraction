@@ -29,7 +29,7 @@ El repositorio está estructurado para separar la lógica del script, los datos 
       * `mi_funcion_ocr()`: La función principal requerida por la prueba. Toma las rutas de entrada/salida y los hiperparámetros de clustering, y ejecuta todo el proceso de IA para reconstruir la tabla.
   * **`data/hOCR/`**: Contiene los archivos `.hocr` de entrada que se van a procesar.
   * **`data/pdf/`**: Contiene los archivos PDF originales, que se proporcionan únicamente como referencia visual. El script no los utiliza.
-  * **`data/outputs/`**: Es el directorio donde el `main.py` guardará los archivos `.csv` finales reconstruidos.
+  * **`data/outputs/`**: los archivos `.csv` finales reconstruidos.
   * **`requirements.txt`**: El archivo de dependencias del proyecto.
 
 
