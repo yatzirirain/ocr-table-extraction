@@ -6,10 +6,10 @@ Este proyecto consiste en reconstruir estructuras de tablas a partir de archivos
 ## **Dependencias:**
 
 
-Las bibliotecas principales necesarias (que no están en la biblioteca estándar de Python) se enumeran en `requirements.txt`.
+Las bibliotecas principales necesarias se enumeran en `requirements.txt`.
 
   * **pandas:** Para la manipulación de datos y la exportación final a CSV.
-  * **beautifulsoup4:** Para un parseo eficiente del archivo HOCR (formato similar a XML/HTML).
+  * **beautifulsoup4:** Para un parseo eficiente del archivo HOCR.
   * **scikit-learn:** Para el algoritmo de clustering DBSCAN, que es el núcleo de la lógica de reconstrucción.
 
 
@@ -17,25 +17,25 @@ Las bibliotecas principales necesarias (que no están en la biblioteca estándar
 
 El desafío consiste en procesar los resultados de un motor de OCR, proporcionados en formato `.hocr`.
 
-Los documentos de entrada eran Balances Financieros con diferentes diseños, y el archivo `.hocr` proporcionaba el texto crudo y las coordenadas de cada palabra y línea. La motivación principal no era realizar el OCR, sino **desarrollar una lógica de programación robusta para reconstruir la estructura de la tabla original** (incluyendo sus jerarquías y tabulaciones) a partir de esta información geométrica.
+Los documentos de entrada son Balances Financieros con diferentes diseños, y el archivo `.hocr` proporciona el texto crudo y las coordenadas de cada palabra y línea. La motivación principal no es realizar el OCR, sino reconstruir la estructura de la tabla original (incluyendo sus jerarquías y tabulaciones) a partir de esta información geométrica proporcionada en los archivos `.hocr`.
 
 ##  **Descripcion de los archivos**
 
 El repositorio está estructurado para separar la lógica del script, los datos de entrada y los resultados.
 
-  * **`main.py`**: Este es el script principal. Se encarga de encontrar todos los archivos `.hocr` en el directorio de datos, llamar a la función de procesamiento para cada uno y guardar los resultados en la carpeta de `outputs`.
+  * **`main.py`**: Se encarga de encontrar todos los archivos `.hocr` en el directorio de datos, llamar a la función de procesamiento para cada uno y guardar los resultados en la carpeta de `outputs`.
   * **`src/ocr_hocr_table/hocr_to_csv.py`**: Contiene toda la lógica central del proyecto.
       * `parse_hocr_to_df()`: Una función auxiliar que lee el archivo `.hocr` usando BeautifulSoup y extrae la información de las etiquetas `ocr_line`.
       * `mi_funcion_ocr()`: La función principal requerida por la prueba. Toma las rutas de entrada/salida y los hiperparámetros de clustering, y ejecuta todo el proceso de IA para reconstruir la tabla.
   * **`data/hOCR/`**: Contiene los archivos `.hocr` de entrada que se van a procesar.
   * **`data/pdf/`**: Contiene los archivos PDF originales, que se proporcionan únicamente como referencia visual. El script no los utiliza.
-  * **`data/outputs/`**: los archivos `.csv` finales reconstruidos.
+  * **`data/outputs/`**: Contiene los archivos `.csv` finales reconstruidos.
   * **`requirements.txt`**: El archivo de dependencias del proyecto.
 
 
 
 ## Cómo Ejecutar el Proyecto
-
+ 
 Para procesar todos los archivos `.hocr` ubicados en `data/hOCR/` y generar los CSV en `data/outputs/`:
 
 1.  Se debe tener un entorno virtual activado y las dependencias instaladas.
